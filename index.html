@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,115 +7,484 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f172a;
+      --panel: #020617;
+      --text: #e5e7eb;
+      --muted: rgba(229,231,235,0.85);
+      --accent: #38bdf8;
+      --accent2: #6366f1;
+      --border: rgba(56,189,248,0.14);
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
-    a { color: #38bdf8; text-decoration: none; }
+
+    a { color: var(--accent); text-decoration: none; }
+
     header {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      display: grid;
+      place-items: center;
       background: radial-gradient(circle at top, #1e293b, #020617);
-      padding: 2rem;
+      padding: 2.5rem 1.5rem;
     }
-    header h1 {
-      font-size: 3rem;
+
+    .hero {
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.22);
       font-weight: 700;
+      font-size: 0.85rem;
+      width: fit-content;
+      margin-bottom: 0.85rem;
     }
-    header p {
-      max-width: 700px;
-      margin: 1rem auto;
-      font-size: 1.1rem;
+
+    header h1 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title {
+      font-size: 1.05rem;
       opacity: 0.9;
+      margin-top: 0.6rem;
     }
+
+    .hero-sub {
+      max-width: 700px;
+      margin-top: 0.9rem;
+      opacity: 0.92;
+      font-size: 1.05rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.4rem;
+    }
+
     .btn {
       display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 1.8rem;
-      border-radius: 30px;
-      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
       color: #020617;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    section {
-      padding: 5rem 10%;
+
+    .btn:hover { filter: brightness(1.05); }
+
+    .btn-ghost {
+      background: rgba(56,189,248,0.08);
+      color: var(--text);
+      border: 1px solid rgba(56,189,248,0.22);
     }
+
+    .btn-ghost:hover { background: rgba(56,189,248,0.14); }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      margin-top: 1.2rem;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+
+    .hero-right {
+      display: grid;
+      place-items: center;
+      justify-items: center;
+      gap: 0.8rem;
+    }
+
+    .avatar {
+      width: min(320px, 80vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      background:
+        url('assets/profile.jpg') center/cover no-repeat,
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.25), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(99,102,241,0.22), transparent 40%),
+        linear-gradient(135deg, rgba(30,41,59,0.9), rgba(2,6,23,0.9));
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::after {
+      content: 'profile.jpg';
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      opacity: 0.85;
+      background: rgba(2,6,23,0.55);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+    }
+
+    .avatar-hint { font-size: 0.9rem; opacity: 0.8; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-badge { margin-left: auto; margin-right: auto; }
+      .hero-cta { justify-content: center; }
+      .hero-meta { justify-content: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+    }
+
+    section { padding: 5rem 10%; }
+
     section h2 {
       font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: #38bdf8;
+      margin-bottom: 1.6rem;
+      color: var(--accent);
     }
+
+    .lead {
+      max-width: 950px;
+      opacity: 0.9;
+      margin-bottom: 1.2rem;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
+
     .card {
-      background: #020617;
+      background: var(--panel);
       border-radius: 16px;
       padding: 1.5rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.08);
     }
-    .card:hover { transform: translateY(-6px); }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+    }
+
     .card h3 { margin-bottom: 0.5rem; }
+
     ul { list-style: none; }
+
     ul li::before {
       content: '▹';
-      color: #38bdf8;
+      color: var(--accent);
       margin-right: 8px;
     }
+
+    .project-tabs {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.4rem;
+    }
+
+    .tab {
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.10);
+      border: 1px solid rgba(148,163,184,0.18);
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .tab.active {
+      background: linear-gradient(90deg, rgba(56,189,248,0.22), rgba(99,102,241,0.20));
+      border-color: rgba(56,189,248,0.28);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.show { display: block; }
+
+    .project-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.25), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(99,102,241,0.22), transparent 40%),
+        linear-gradient(135deg, rgba(30,41,59,0.9), rgba(2,6,23,0.9));
+      border: 1px dashed rgba(56, 189, 248, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-media::after {
+      content: 'Add screenshot';
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    /* Hide placeholder label when a real image exists */
+    .project-media[style*="background-image:url"]::after { content: ''; }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .project-links a {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.10);
+      border: 1px solid rgba(56,189,248,0.18);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .project-links a:hover { background: rgba(56,189,248,0.16); }
+
+    .project-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+
+    code {
+      background: rgba(99,102,241,0.14);
+      padding: 0.1rem 0.35rem;
+      border-radius: 8px;
+      border: 1px solid rgba(99,102,241,0.22);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
-      background: #020617;
-      opacity: 0.8;
+      background: var(--panel);
+      opacity: 0.85;
     }
   </style>
 </head>
-<body><header>
-  <div>
-    <h1>Anas Bashir</h1>
-    <p>Creative UI/UX Designer • Python & AI Enthusiast • Digital Marketer</p>
-    <p>An adaptable professional with 4+ years of experience in design, technology, and operations. Passionate about building user‑centered digital experiences and intelligent systems.</p>
-    <a href="#contact" class="btn">Get In Touch</a>
+<body>
+
+<header>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">UI/UX • Graphics • AI</div>
+      <h1>Anas Bashir</h1>
+      <p class="hero-title">Creative UI/UX Designer • Graphics Designer • Python & AI Enthusiast</p>
+      <p class="hero-sub">An adaptable professional with 4+ years of experience in design, technology, and operations. I build user-centered digital experiences, brand visuals, and practical solutions that look good and work well.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+      <div class="hero-meta">
+        <span>📍 Mararaba, Nasarawa</span>
+        <span>✉️ <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></span>
+        <span>☎️ +234 703 241 3214</span>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-label="Profile photo">
+      <div class="avatar" title="Add your photo"></div>
+      <div class="avatar-hint">Add your photo: <code>assets/profile.jpg</code></div>
+    </div>
   </div>
-</header><section id="skills">
+</header>
+
+<section id="skills">
   <h2>Skills</h2>
   <div class="grid">
     <div class="card"><h3>UI/UX & Design</h3><ul><li>Figma</li><li>CorelDRAW</li><li>Wireframing</li><li>Prototyping</li></ul></div>
     <div class="card"><h3>Programming & Data</h3><ul><li>Python</li><li>AI & Machine Learning</li><li>Data Science</li></ul></div>
-    <div class="card"><h3>Digital & Office</h3><ul><li>Digital Marketing</li><li>Microsoft Word & Excel</li><li>Web‑savvy</li></ul></div>
+    <div class="card"><h3>Digital & Office</h3><ul><li>Digital Marketing</li><li>Microsoft Word & Excel</li><li>Web-savvy</li></ul></div>
     <div class="card"><h3>Soft Skills</h3><ul><li>Negotiation</li><li>Human Relations</li><li>English & Hausa</li></ul></div>
   </div>
-</section><section id="experience">
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-tabs" role="tablist" aria-label="Project categories">
+    <button class="tab active" data-tab="uiux" type="button">UI/UX</button>
+    <button class="tab" data-tab="graphics" type="button">Graphics Design</button>
+  </div>
+
+  <!-- UI/UX -->
+  <div class="tab-panel show" id="uiux" role="tabpanel">
+    <p class="lead">Selected UI/UX work (Figma links). Add screenshots in <code>assets/</code> for a stronger visual impact.</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/hospital-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Hospital Management System UI</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Dashboard + workflows designed for staff efficiency and clear patient/admin navigation.</p>
+        <div class="project-links">
+          <a href="https://www.figma.com/design/0D8xBudzAvZWVNKHjO59F3/My-Doc-Lab?node-id=41-2463&t=J66X04B0DyZnRtZ9-1" target="_blank" rel="noopener">View on Figma</a>
+        </div>
+        <p class="project-note">Screenshot: <code>assets/hospital-ui.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/ecommerce-lending-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Ecommerce Lending & Service Request Website UI</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">A web UI that supports product browsing, lending flow, and service request tracking.</p>
+        <div class="project-links">
+          <a href="https://www.figma.com/design/v2sVJC7KVCrp98yHIBDmug/New-Qrental?node-id=0-1&t=eFL0quFz2ZTuSZ4i-1" target="_blank" rel="noopener">View on Figma</a>
+        </div>
+        <p class="project-note">Screenshot: <code>assets/ecommerce-lending-ui.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/boxing-membership-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Boxing Membership Website UI</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Membership plans, onboarding, class schedules, and a clean conversion-focused layout.</p>
+        <div class="project-links">
+          <a href="https://www.figma.com/design/EdYL1dWEgdoSEjOWOq5FDG/Untitled?node-id=0-1&t=N8RxKefwMCfHSpBs-1" target="_blank" rel="noopener">View on Figma</a>
+        </div>
+        <p class="project-note">Screenshot: <code>assets/boxing-membership-ui.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/ecommerce-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Ecommerce Website UI</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Product pages, cart flow, and modern storefront UI designed for smooth checkout.</p>
+        <div class="project-links">
+          <a href="https://www.figma.com/design/adNkLWgYEF2wAM96Y8dMEX/E-commerce?t=N8RxKefwMCfHSpBs-1" target="_blank" rel="noopener">View on Figma</a>
+        </div>
+        <p class="project-note">Screenshot: <code>assets/ecommerce-ui.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/daalu-pay-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Daalu Pay App UI</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Mobile payment app UI focused on clarity, trust, and smooth transaction flows.</p>
+        <div class="project-links">
+          <a href="https://www.figma.com/design/nNvbTTkMyE6bikV7cA4DI4/Daalu-Pay?node-id=0-1&t=EgCczfAL4tVgthuD-1" target="_blank" rel="noopener">View on Figma</a>
+        </div>
+        <p class="project-note">Screenshot: <code>assets/daalu-pay-ui.jpg</code></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GRAPHICS -->
+  <div class="tab-panel" id="graphics" role="tabpanel">
+    <p class="lead">Branding and marketing visuals. Add images in <code>assets/</code>. You can also replace the buttons with a Drive/Behance link later.</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/akh-global-logo.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">AKH Global Logo Design</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Clean logo concept with strong brand presence and scalable usage across digital/print.</p>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">View</a>
+        </div>
+        <p class="project-note">Image: <code>assets/akh-global-logo.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/fashion-flyer.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Fashion Design Flyer</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Promotional flyer with modern typography, product focus, and social-ready layout.</p>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">View</a>
+        </div>
+        <p class="project-note">Image: <code>assets/fashion-flyer.jpg</code></p>
+      </div>
+
+      <div class="card">
+        <div class="project-media" style="background-image:url('assets/restaurant-flyer.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
+        <h3 style="margin-top:1rem;">Restaurant Flyer Design</h3>
+        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Appetite-driven design with clear offers, menu highlights, and strong CTA.</p>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">View</a>
+        </div>
+        <p class="project-note">Image: <code>assets/restaurant-flyer.jpg</code></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
   <h2>Experience</h2>
   <div class="grid">
-    <div class="card"><h3>Walex Biz Nigeria</h3><p><strong>UI/UX & Graphics Designer</strong> (2024–2025)</p><ul><li>Designed UI for 3 functional software products</li><li>Created wireframes and visual assets</li><li>Collaborated with developers</li></ul></div>
-    <div class="card"><h3>NCAIR (NITDA)</h3><p><strong>NYSC Intern</strong> (2023–2024)</p><ul><li>Python & AI training</li><li>Built a football prediction model</li><li>Completed UI/UX program</li></ul></div>
-    <div class="card"><h3>Abdulrazak & Co. Mining</h3><p><strong>Site Supervisor</strong> (2022–2023)</p><ul><li>Supervised mining operations</li><li>Improved safety standards</li></ul></div>
+    <div class="card"><h3>Walex Biz Nigeria</h3><p><strong>UI/UX & Graphics Designer</strong> (Nov 2024 – Feb 2025)</p><ul><li>Responsible for UI/UX and graphics design</li><li>Built wireframes for future projects</li><li>Worked closely with developers to build software from UI designs</li><li>Designed UI for 3 functional software products and websites</li></ul></div>
+    <div class="card"><h3>National Centre for AI & Robotics (NITDA)</h3><p><strong>NYSC Intern</strong> (Nov 2023 – Oct 2024)</p><ul><li>Completed Python beginner training</li><li>Completed intermediate AI/ML & data science training</li><li>Developed a football prediction model project</li><li>Designed a functional UI for project work</li></ul></div>
+    <div class="card"><h3>Abdulrazak & Co. Int’l Mining Ltd</h3><p><strong>Site Supervisor</strong> (Feb 2022 – Aug 2023)</p><ul><li>Oversaw field activities and prepared weekly reports</li><li>Improved on-site safety practices and standards</li><li>Managed welfare of on-site labourers</li></ul></div>
   </div>
-</section><section id="education">
+</section>
+
+<section id="education">
   <h2>Education & Certifications</h2>
   <div class="grid">
-    <div class="card"><h3>B.Tech Animal Production</h3><p>Abubakar Tafawa Balewa University</p></div>
-    <div class="card"><h3>AI, ML & Data Science</h3><p>NCAIR (NITDA)</p></div>
-    <div class="card"><h3>Drone Training</h3><p>UK Civil Aviation Society</p></div>
-    <div class="card"><h3>Digital Marketing</h3><p>Google Digital Skills for Africa</p></div>
+    <div class="card"><h3>B.Agric.Tech (Hons) Animal Production</h3><p>Abubakar Tafawa Balewa University, Bauchi — Second Class Upper (2023)</p></div>
+    <div class="card"><h3>AI, Machine Learning & Data Science</h3><p>National Centre for AI & Robotics (NITDA) — 2024</p></div>
+    <div class="card"><h3>Drone & Model Aircraft Online Training</h3><p>United Kingdom Civil Aviation Society — 2025</p></div>
+    <div class="card"><h3>Digital Marketing</h3><p>Google Digital Skills for Africa — 2019</p></div>
   </div>
-</section><section id="contact">
+</section>
+
+<section id="contact">
   <h2>Contact</h2>
   <div class="grid">
     <div class="card"><p>Email: <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></p></div>
     <div class="card"><p>Phone: +234 703 241 3214</p></div>
-    <div class="card"><p>GitHub: <a href="https://github.com/anasbashir0" target="_blank">anasbashir0</a></p></div>
+    <div class="card"><p>GitHub: <a href="https://github.com/anasbashir0" target="_blank" rel="noopener">anasbashir0</a></p></div>
   </div>
-</section><footer>
+</section>
+
+<footer>
   <p>© 2026 Anas Bashir. Built with ❤️ and creativity.</p>
-</footer></body>
+</footer>
+
+<script>
+  // Simple tabs for Projects
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      panels.forEach(p => p.classList.remove('show'));
+      const panel = document.getElementById(target);
+      if (panel) panel.classList.add('show');
+    });
+  });
+</script>
+
+</body>
 </html>
