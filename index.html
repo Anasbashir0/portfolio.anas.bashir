@@ -283,7 +283,10 @@
 
     <div class="nav-links" aria-label="Primary">
       <a href="#top" data-nav="top">Home</a>
+      <a href="#skills" data-nav="skills">Skills</a>
       <a href="#projects" data-nav="projects">Projects</a>
+      <a href="#experience" data-nav="experience">Experience</a>
+      <a href="#education" data-nav="education">Education</a>
       <a href="#contact" data-nav="contact">Contact</a>
       <a class="nav-cta" href="./assets/Anas_Bashir_CV.pdf" target="_blank" rel="noopener">Download CV</a>
     </div>
@@ -312,6 +315,18 @@
     </div>
   </div>
 </header>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="reveal">Skills</h2>
+    <div class="grid">
+      <div class="card reveal"><h3>UI/UX & Design</h3><ul style="margin-top:0.7rem; padding-left: 0; list-style:none;"><li>Figma</li><li>Wireframing</li><li>Prototyping</li><li>Design systems</li></ul></div>
+      <div class="card reveal"><h3>Graphics Design</h3><ul style="margin-top:0.7rem; padding-left: 0; list-style:none;"><li>CorelDRAW</li><li>Brand identity</li><li>Flyers & social creatives</li></ul></div>
+      <div class="card reveal"><h3>Programming & Data</h3><ul style="margin-top:0.7rem; padding-left: 0; list-style:none;"><li>Python</li><li>AI & Machine Learning</li><li>Data Science</li></ul></div>
+      <div class="card reveal"><h3>Digital & Soft Skills</h3><ul style="margin-top:0.7rem; padding-left: 0; list-style:none;"><li>Digital Marketing</li><li>Microsoft Word & Excel</li><li>Negotiation</li><li>English & Hausa</li></ul></div>
+    </div>
+  </div>
+</section>
 
 <section id="projects">
   <div class="wrap">
@@ -392,6 +407,53 @@
   </div>
 </section>
 
+<section id="experience">
+  <div class="wrap">
+    <h2 class="reveal">Experience</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <h3>Walex Biz Nigeria</h3>
+        <p style="opacity:0.9; margin-top:0.4rem;"><strong>UI/UX & Graphics Designer</strong> (Nov 2024 – Feb 2025)</p>
+        <ul style="margin-top:0.8rem; padding-left: 0; list-style:none;">
+          <li>Designed UI for functional software products and websites</li>
+          <li>Created wireframes and visual assets for upcoming projects</li>
+          <li>Collaborated with developers to implement designs</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>National Centre for AI & Robotics (NITDA)</h3>
+        <p style="opacity:0.9; margin-top:0.4rem;"><strong>NYSC Intern</strong> (Nov 2023 – Oct 2024)</p>
+        <ul style="margin-top:0.8rem; padding-left: 0; list-style:none;">
+          <li>Completed Python beginner and intermediate AI/ML training</li>
+          <li>Built a football prediction model project</li>
+          <li>Completed UI/UX training and designed a functional project UI</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>Abdulrazak & Co. Int’l Mining Ltd</h3>
+        <p style="opacity:0.9; margin-top:0.4rem;"><strong>Site Supervisor</strong> (Feb 2022 – Aug 2023)</p>
+        <ul style="margin-top:0.8rem; padding-left: 0; list-style:none;">
+          <li>Supervised field activities and prepared weekly reports</li>
+          <li>Improved on-site safety practices and standards</li>
+          <li>Managed welfare of on-site labourers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="reveal">Education & Certifications</h2>
+    <div class="grid">
+      <div class="card reveal"><h3>B.Agric.Tech (Hons) Animal Production</h3><p style="opacity:0.9; margin-top:0.4rem;">Abubakar Tafawa Balewa University, Bauchi — Second Class Upper (2023)</p></div>
+      <div class="card reveal"><h3>AI, Machine Learning & Data Science</h3><p style="opacity:0.9; margin-top:0.4rem;">National Centre for AI & Robotics (NITDA) — 2024</p></div>
+      <div class="card reveal"><h3>Drone & Model Aircraft Online Training</h3><p style="opacity:0.9; margin-top:0.4rem;">UK Civil Aviation Society — 2025</p></div>
+      <div class="card reveal"><h3>Digital Marketing</h3><p style="opacity:0.9; margin-top:0.4rem;">Google Digital Skills for Africa — 2019</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <h2 class="reveal">Contact</h2>
@@ -441,7 +503,10 @@
   const navLinks = document.querySelectorAll('[data-nav]');
   const watched = [
     document.getElementById('top'),
+    document.getElementById('skills'),
     document.getElementById('projects'),
+    document.getElementById('experience'),
+    document.getElementById('education'),
     document.getElementById('contact')
   ].filter(Boolean);
 
