@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anas Bashir | Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -70,7 +72,7 @@
 
     .nav-links {
       display: flex;
-      gap: 0.9rem;
+      gap: 0.7rem;
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
@@ -122,4 +124,343 @@
     }
 
     .hero-badge {
-      display: inline
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.22);
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title { margin-top: 0.6rem; opacity: 0.92; }
+    .hero-sub { margin-top: 1rem; max-width: 680px; opacity: 0.92; }
+
+    .hero-cta {
+      margin-top: 1.4rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .btn.alt {
+      background: rgba(56,189,248,0.10);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .hero-meta { margin-top: 1.2rem; opacity: 0.85; }
+
+    .hero-right {
+      display: grid;
+      place-items: center;
+    }
+
+    .avatar {
+      width: min(320px, 80vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      background: url('./assets/profile.jpg') 50% 30% / cover no-repeat;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-cta { justify-content: center; }
+      .nav-inner { padding: 0.85rem 1rem; }
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 10%; }
+    .wrap { width: min(1100px, 100%); margin: 0 auto; }
+    h2 { font-size: 2.2rem; color: var(--accent); margin-bottom: 1.6rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(56,189,248,0.10);
+      transition: transform .3s ease, box-shadow .3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+    }
+
+    /* PROJECTS */
+    .tabs { display: flex; gap: 0.8rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+    .tab {
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(148,163,184,0.10);
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab.active { background: linear-gradient(90deg, rgba(56,189,248,0.25), rgba(99,102,241,0.2)); }
+
+    .panel { display: none; }
+    .panel.show { display: block; }
+
+    .thumb {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card h3 { margin-top: 1rem; font-size: 1.05rem; }
+
+    /* FADE-IN */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease, transform 700ms ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--panel);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span>Anas Bashir</span>
+    </a>
+
+    <div class="nav-links" aria-label="Primary">
+      <a href="#top" data-nav="top">Home</a>
+      <a href="#projects" data-nav="projects">Projects</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+      <a class="nav-cta" href="./assets/Anas_Bashir_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero">
+    <div class="reveal">
+      <div class="hero-badge">UI/UX • Graphics • AI</div>
+      <h1>Anas Bashir</h1>
+      <p class="hero-title">Creative UI/UX Designer • Graphics Designer • Python & AI Enthusiast</p>
+      <p class="hero-sub">I design clean interfaces, compelling visuals, and intelligent digital solutions that are both functional and visually engaging.</p>
+
+      <div class="hero-cta">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn alt">Contact Me</a>
+        <a href="./assets/Anas_Bashir_CV.pdf" class="btn alt" target="_blank" rel="noopener">Download CV</a>
+      </div>
+
+      <div class="hero-meta">📍 Mararaba, Nasarawa • ✉️ <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a> • ☎️ 07032413214</div>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="avatar" aria-label="Profile photo"></div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="reveal">Projects</h2>
+
+    <div class="tabs reveal">
+      <button class="tab active" data-tab="uiux" type="button">UI/UX</button>
+      <button class="tab" data-tab="graphics" type="button">Graphics Design</button>
+    </div>
+
+    <div class="panel show" id="uiux">
+      <div class="grid">
+
+        <div class="card reveal">
+          <a class="thumb" href="https://www.figma.com/design/0D8xBudzAvZWVNKHjO59F3/My-Doc-Lab" target="_blank" rel="noopener">
+            <img src="./assets/hospital-ui.jpg" alt="Hospital Management UI" loading="lazy">
+          </a>
+          <h3>Hospital Management System UI</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="https://www.figma.com/design/v2sVJC7KVCrp98yHIBDmug/New-Qrental" target="_blank" rel="noopener">
+            <img src="./assets/ecommerce-lending-ui.jpg" alt="Ecommerce Lending UI" loading="lazy">
+          </a>
+          <h3>Ecommerce Lending & Service Request UI</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="https://www.figma.com/design/EdYL1dWEgdoSEjOWOq5FDG/Untitled" target="_blank" rel="noopener">
+            <img src="./assets/boxing-membership-ui.jpg" alt="Boxing Membership UI" loading="lazy">
+          </a>
+          <h3>Boxing Membership Website UI</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="https://www.figma.com/design/adNkLWgYEF2wAM96Y8dMEX/E-commerce" target="_blank" rel="noopener">
+            <img src="./assets/ecommerce-ui.jpg" alt="Ecommerce UI" loading="lazy">
+          </a>
+          <h3>Ecommerce Website UI</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="https://www.figma.com/design/nNvbTTkMyE6bikV7cA4DI4/Daalu-Pay" target="_blank" rel="noopener">
+            <img src="./assets/daalu-pay-ui.jpg" alt="Daalu Pay UI" loading="lazy">
+          </a>
+          <h3>Daalu Pay App UI</h3>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel" id="graphics">
+      <div class="grid">
+
+        <div class="card reveal">
+          <a class="thumb" href="./assets/akh-global-logo.jpg" target="_blank" rel="noopener">
+            <img src="./assets/akh-global-logo.jpg" alt="AKH Global Logo" loading="lazy">
+          </a>
+          <h3>AKH Global Logo Design</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="./assets/fashion-flyer.jpg" target="_blank" rel="noopener">
+            <img src="./assets/fashion-flyer.jpg" alt="Fashion Flyer" loading="lazy">
+          </a>
+          <h3>Fashion Design Flyer</h3>
+        </div>
+
+        <div class="card reveal">
+          <a class="thumb" href="./assets/restaurant-flyer.jpg" target="_blank" rel="noopener">
+            <img src="./assets/restaurant-flyer.jpg" alt="Restaurant Flyer" loading="lazy">
+          </a>
+          <h3>Restaurant Flyer Design</h3>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Contact</h2>
+    <div class="grid">
+      <div class="card reveal">Email: <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></div>
+      <div class="card reveal">Phone: 07032413214</div>
+      <div class="card reveal">GitHub: <a href="https://github.com/anasbashir0" target="_blank" rel="noopener">anasbashir0</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Anas Bashir. Built with ❤️</p>
+</footer>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('show'));
+      tab.classList.add('active');
+      const target = document.getElementById(tab.dataset.tab);
+      if (target) target.classList.add('show');
+    });
+  });
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Active nav highlighting
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const watched = [
+    document.getElementById('top'),
+    document.getElementById('projects'),
+    document.getElementById('contact')
+  ].filter(Boolean);
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const id = entry.target.id;
+          const link = document.querySelector(`[data-nav="${id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: "-50% 0px -45% 0px", threshold: 0.01 }
+  );
+
+  watched.forEach(sec => navObserver.observe(sec));
+</script>
+
+</body>
+</html>
