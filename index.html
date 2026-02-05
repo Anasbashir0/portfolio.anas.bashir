@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anas Bashir | Creative Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -12,10 +13,9 @@
       --bg: #0f172a;
       --panel: #020617;
       --text: #e5e7eb;
-      --muted: rgba(229,231,235,0.85);
       --accent: #38bdf8;
       --accent2: #6366f1;
-      --border: rgba(56,189,248,0.14);
+      --border: rgba(56,189,248,0.18);
     }
 
     body {
@@ -27,6 +27,7 @@
 
     a { color: var(--accent); text-decoration: none; }
 
+    /* HERO */
     header {
       min-height: 100vh;
       display: grid;
@@ -44,138 +45,73 @@
     }
 
     .hero-badge {
-      display: inline-flex;
-      gap: 0.5rem;
-      align-items: center;
-      padding: 0.35rem 0.8rem;
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
       border-radius: 999px;
       background: rgba(99,102,241,0.12);
       border: 1px solid rgba(99,102,241,0.22);
       font-weight: 700;
       font-size: 0.85rem;
-      width: fit-content;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.8rem;
     }
 
-    header h1 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
-    .hero-title {
-      font-size: 1.05rem;
-      opacity: 0.9;
-      margin-top: 0.6rem;
-    }
-
-    .hero-sub {
-      max-width: 700px;
-      margin-top: 0.9rem;
-      opacity: 0.92;
-      font-size: 1.05rem;
-    }
+    .hero-title { margin-top: 0.6rem; opacity: 0.9; }
+    .hero-sub { margin-top: 1rem; max-width: 680px; }
 
     .hero-cta {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
       margin-top: 1.4rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      padding: 0.85rem 1.5rem;
+      padding: 0.8rem 1.6rem;
       border-radius: 999px;
+      font-weight: 700;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       color: #020617;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .btn:hover { filter: brightness(1.05); }
-
-    .btn-ghost {
-      background: rgba(56,189,248,0.08);
+    .btn.alt {
+      background: rgba(56,189,248,0.1);
       color: var(--text);
-      border: 1px solid rgba(56,189,248,0.22);
+      border: 1px solid var(--border);
     }
 
-    .btn-ghost:hover { background: rgba(56,189,248,0.14); }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem 1rem;
-      margin-top: 1.2rem;
-      opacity: 0.85;
-      font-size: 0.95rem;
-    }
+    .hero-meta { margin-top: 1.2rem; opacity: 0.85; }
 
     .hero-right {
       display: grid;
       place-items: center;
-      justify-items: center;
-      gap: 0.8rem;
     }
 
     .avatar {
       width: min(320px, 80vw);
       aspect-ratio: 1 / 1;
       border-radius: 28px;
-      background:
-        url('assets/profile.jpg') 50% 30%/cover no-repeat,
-        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.25), transparent 35%),
-        radial-gradient(circle at 80% 30%, rgba(99,102,241,0.22), transparent 40%),
-        linear-gradient(135deg, rgba(30,41,59,0.9), rgba(2,6,23,0.9));
-      border: 1px solid rgba(56, 189, 248, 0.18);
+      background: url('./assets/profile.jpg') 50% 30% / cover no-repeat;
+      border: 1px solid var(--border);
       box-shadow: 0 18px 60px rgba(0,0,0,0.55);
-      position: relative;
-      overflow: hidden;
     }
-
-    .avatar::after {
-      content: 'profile.jpg';
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      opacity: 0.85;
-      background: rgba(2,6,23,0.55);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(8px);
-    }
-
-    .avatar-hint { font-size: 0.9rem; opacity: 0.8; }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
-      .hero-badge { margin-left: auto; margin-right: auto; }
       .hero-cta { justify-content: center; }
-      .hero-meta { justify-content: center; }
-      .hero-sub { margin-left: auto; margin-right: auto; }
     }
 
+    /* SECTIONS */
     section { padding: 5rem 10%; }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1.6rem;
-      color: var(--accent);
-    }
-
-    .lead {
-      max-width: 950px;
-      opacity: 0.9;
-      margin-bottom: 1.2rem;
-    }
+    h2 { font-size: 2.2rem; color: var(--accent); margin-bottom: 1.6rem; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
 
@@ -183,108 +119,38 @@
       background: var(--panel);
       border-radius: 16px;
       padding: 1.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56,189,248,0.1);
+      transition: transform .3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.55);
-    }
+    .card:hover { transform: translateY(-6px); }
 
-    .card h3 { margin-bottom: 0.5rem; }
-
-    ul { list-style: none; }
-
-    ul li::before {
-      content: '▹';
-      color: var(--accent);
-      margin-right: 8px;
-    }
-
-    .project-tabs {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin: 0 0 1.4rem;
-    }
-
+    /* PROJECTS */
+    .tabs { display: flex; gap: 0.8rem; margin-bottom: 1.4rem; }
     .tab {
       padding: 0.6rem 1.1rem;
       border-radius: 999px;
-      background: rgba(148,163,184,0.10);
-      border: 1px solid rgba(148,163,184,0.18);
+      border: 1px solid var(--border);
+      background: rgba(148,163,184,0.1);
       color: var(--text);
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
-      font-size: 0.95rem;
     }
+    .tab.active { background: linear-gradient(90deg, rgba(56,189,248,0.25), rgba(99,102,241,0.2)); }
 
-    .tab.active {
-      background: linear-gradient(90deg, rgba(56,189,248,0.22), rgba(99,102,241,0.20));
-      border-color: rgba(56,189,248,0.28);
-    }
+    .panel { display: none; }
+    .panel.show { display: block; }
 
-    .tab-panel { display: none; }
-    .tab-panel.show { display: block; }
-
-    .project-media {
-      width: 100%;
-      aspect-ratio: 16 / 9;
+    .thumb {
+      display: block;
       border-radius: 14px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.25), transparent 35%),
-        radial-gradient(circle at 80% 30%, rgba(99,102,241,0.22), transparent 40%),
-        linear-gradient(135deg, rgba(30,41,59,0.9), rgba(2,6,23,0.9));
-      border: 1px dashed rgba(56, 189, 248, 0.25);
-      position: relative;
       overflow: hidden;
+      border: 1px solid var(--border);
     }
 
-    .project-media::after {
-      content: 'Add screenshot';
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 0.95rem;
-      opacity: 0.75;
-    }
-
-    /* Hide placeholder label when a real image exists */
-    .project-media[style*="background-image:url"]::after { content: ''; }
-
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 0.8rem;
-    }
-
-    .project-links a {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.10);
-      border: 1px solid rgba(56,189,248,0.18);
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .project-links a:hover { background: rgba(56,189,248,0.16); }
-
-    .project-note {
-      margin-top: 0.8rem;
-      font-size: 0.85rem;
-      opacity: 0.75;
-    }
-
-    code {
-      background: rgba(99,102,241,0.14);
-      padding: 0.1rem 0.35rem;
-      border-radius: 8px;
-      border: 1px solid rgba(99,102,241,0.22);
+    .thumb img {
+      width: 100%;
+      display: block;
     }
 
     footer {
@@ -293,200 +159,118 @@
       background: var(--panel);
       opacity: 0.85;
     }
-    /* Graphics thumbnails */
-.graphics-thumb {
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(56,189,248,0.18);
-}
-
-.graphics-thumb img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
   </style>
 </head>
 <body>
 
 <header>
   <div class="hero">
-    <div class="hero-left">
+    <div>
       <div class="hero-badge">UI/UX • Graphics • AI</div>
       <h1>Anas Bashir</h1>
       <p class="hero-title">Creative UI/UX Designer • Graphics Designer • Python & AI Enthusiast</p>
-      <p class="hero-sub">An adaptable professional with 4+ years of experience in design, technology, and operations. I build user-centered digital experiences, brand visuals, and practical solutions that look good and work well.</p>
+      <p class="hero-sub">I design clean interfaces, compelling visuals, and intelligent digital solutions that are both functional and visually engaging.</p>
+
       <div class="hero-cta">
         <a href="#projects" class="btn">View Projects</a>
-        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        <a href="#contact" class="btn alt">Contact Me</a>
       </div>
-      <div class="hero-meta">
-        <span>📍 Mararaba, Nasarawa</span>
-        <span>✉️ <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></span>
-        <span>☎️ +234 703 241 3214</span>
-      </div>
+
+      <div class="hero-meta">📍 Mararaba, Nasarawa • ✉️ anasbashir0@gmail.com • ☎️ 07032413214</div>
     </div>
 
-    <div class="hero-right" aria-label="Profile photo">
-      <div class="avatar" title="Add your photo"></div>
-      <div class="avatar-hint">Add your photo: <code>assets/profile.jpg</code></div>
+    <div class="hero-right">
+      <div class="avatar"></div>
     </div>
   </div>
 </header>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="grid">
-    <div class="card"><h3>UI/UX & Design</h3><ul><li>Figma</li><li>CorelDRAW</li><li>Wireframing</li><li>Prototyping</li></ul></div>
-    <div class="card"><h3>Programming & Data</h3><ul><li>Python</li><li>AI & Machine Learning</li><li>Data Science</li></ul></div>
-    <div class="card"><h3>Digital & Office</h3><ul><li>Digital Marketing</li><li>Microsoft Word & Excel</li><li>Web-savvy</li></ul></div>
-    <div class="card"><h3>Soft Skills</h3><ul><li>Negotiation</li><li>Human Relations</li><li>English & Hausa</li></ul></div>
-  </div>
-</section>
-
 <section id="projects">
   <h2>Projects</h2>
 
-  <div class="project-tabs" role="tablist" aria-label="Project categories">
-    <button class="tab active" data-tab="uiux" type="button">UI/UX</button>
-    <button class="tab" data-tab="graphics" type="button">Graphics Design</button>
+  <div class="tabs">
+    <button class="tab active" data-tab="uiux">UI/UX</button>
+    <button class="tab" data-tab="graphics">Graphics Design</button>
   </div>
 
   <!-- UI/UX -->
-  <div class="tab-panel show" id="uiux" role="tabpanel">
-    <p class="lead">Selected UI/UX work (Figma links). Add screenshots in <code>assets/</code> for a stronger visual impact.</p>
+  <div class="panel show" id="uiux">
     <div class="grid">
 
       <div class="card">
-        <div class="project-media" style="background-image:url('assets/hospital-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
-        <h3 style="margin-top:1rem;">Hospital Management System UI</h3>
-        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Dashboard + workflows designed for staff efficiency and clear patient/admin navigation.</p>
-        <div class="project-links">
-          <a href="https://www.figma.com/design/0D8xBudzAvZWVNKHjO59F3/My-Doc-Lab?node-id=41-2463&t=J66X04B0DyZnRtZ9-1" target="_blank" rel="noopener">View on Figma</a>
-        </div>
-        <p class="project-note">Screenshot: <code>assets/hospital-ui.jpg</code></p>
+        <a class="thumb" href="https://www.figma.com/design/0D8xBudzAvZWVNKHjO59F3/My-Doc-Lab" target="_blank"><img src="./assets/hospital-ui.jpg" alt="Hospital Management UI"></a>
+        <h3>Hospital Management System UI</h3>
       </div>
 
       <div class="card">
-        <div class="project-media" style="background-image:url('assets/ecommerce-lending-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
-        <h3 style="margin-top:1rem;">Ecommerce Lending & Service Request Website UI</h3>
-        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">A web UI that supports product browsing, lending flow, and service request tracking.</p>
-        <div class="project-links">
-          <a href="https://www.figma.com/design/v2sVJC7KVCrp98yHIBDmug/New-Qrental?node-id=0-1&t=eFL0quFz2ZTuSZ4i-1" target="_blank" rel="noopener">View on Figma</a>
-        </div>
-        <p class="project-note">Screenshot: <code>assets/ecommerce-lending-ui.jpg</code></p>
+        <a class="thumb" href="https://www.figma.com/design/v2sVJC7KVCrp98yHIBDmug/New-Qrental" target="_blank"><img src="./assets/ecommerce-lending-ui.jpg" alt="Ecommerce Lending UI"></a>
+        <h3>Ecommerce Lending & Service Request UI</h3>
       </div>
 
       <div class="card">
-        <div class="project-media" style="background-image:url('assets/boxing-membership-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
-        <h3 style="margin-top:1rem;">Boxing Membership Website UI</h3>
-        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Membership plans, onboarding, class schedules, and a clean conversion-focused layout.</p>
-        <div class="project-links">
-          <a href="https://www.figma.com/design/EdYL1dWEgdoSEjOWOq5FDG/Untitled?node-id=0-1&t=N8RxKefwMCfHSpBs-1" target="_blank" rel="noopener">View on Figma</a>
-        </div>
-        <p class="project-note">Screenshot: <code>assets/boxing-membership-ui.jpg</code></p>
+        <a class="thumb" href="https://www.figma.com/design/EdYL1dWEgdoSEjOWOq5FDG/Untitled" target="_blank"><img src="./assets/boxing-membership-ui.jpg" alt="Boxing Membership UI"></a>
+        <h3>Boxing Membership Website UI</h3>
       </div>
 
       <div class="card">
-        <div class="project-media" style="background-image:url('assets/ecommerce-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
-        <h3 style="margin-top:1rem;">Ecommerce Website UI</h3>
-        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Product pages, cart flow, and modern storefront UI designed for smooth checkout.</p>
-        <div class="project-links">
-          <a href="https://www.figma.com/design/adNkLWgYEF2wAM96Y8dMEX/E-commerce?t=N8RxKefwMCfHSpBs-1" target="_blank" rel="noopener">View on Figma</a>
-        </div>
-        <p class="project-note">Screenshot: <code>assets/ecommerce-ui.jpg</code></p>
+        <a class="thumb" href="https://www.figma.com/design/adNkLWgYEF2wAM96Y8dMEX/E-commerce" target="_blank"><img src="./assets/ecommerce-ui.jpg" alt="Ecommerce UI"></a>
+        <h3>Ecommerce Website UI</h3>
       </div>
 
       <div class="card">
-        <div class="project-media" style="background-image:url('assets/daalu-pay-ui.jpg'); background-size:cover; background-position:center; border-style:solid;"></div>
-        <h3 style="margin-top:1rem;">Daalu Pay App UI</h3>
-        <p style="opacity:0.9; margin: 0.4rem 0 0.8rem;">Mobile payment app UI focused on clarity, trust, and smooth transaction flows.</p>
-        <div class="project-links">
-          <a href="https://www.figma.com/design/nNvbTTkMyE6bikV7cA4DI4/Daalu-Pay?node-id=0-1&t=EgCczfAL4tVgthuD-1" target="_blank" rel="noopener">View on Figma</a>
-        </div>
-        <p class="project-note">Screenshot: <code>assets/daalu-pay-ui.jpg</code></p>
+        <a class="thumb" href="https://www.figma.com/design/nNvbTTkMyE6bikV7cA4DI4/Daalu-Pay" target="_blank"><img src="./assets/daalu-pay-ui.jpg" alt="Daalu Pay UI"></a>
+        <h3>Daalu Pay App UI</h3>
       </div>
 
     </div>
   </div>
 
   <!-- GRAPHICS -->
-  <div class="tab-panel" id="graphics" role="tabpanel">
-    <p class="lead">Branding and marketing visuals. Add images in <code>assets/</code>. You can also replace the buttons with a Drive/Behance link later.</p>
+  <div class="panel" id="graphics">
     <div class="grid">
 
       <div class="card">
-        
-          <a href="./assets/akh-global-logo.jpg" target="_blank" rel="noopener">View</a>
-        </div>
-        <p class="project-note">Image: <code>assets/akh-global-logo.jpg</code></p>
+        <a class="thumb" href="./assets/akh-global-logo.jpg" target="_blank"><img src="./assets/akh-global-logo.jpg" alt="AKH Global Logo"></a>
+        <h3>AKH Global Logo Design</h3>
       </div>
 
       <div class="card">
-        
-          <a href="./assets/fashion-flyer.jpg" target="_blank" rel="noopener">View</a>
-        </div>
-        <p class="project-note">Image: <code>assets/fashion-flyer.jpg</code></p>
+        <a class="thumb" href="./assets/fashion-flyer.jpg" target="_blank"><img src="./assets/fashion-flyer.jpg" alt="Fashion Flyer"></a>
+        <h3>Fashion Design Flyer</h3>
       </div>
 
       <div class="card">
-        
-          <a href="./assets/restaurant-flyer.jpg" target="_blank" rel="noopener">View</a>
-        </div>
-        <p class="project-note">Image: <code>assets/restaurant-flyer.jpg</code></p>
+        <a class="thumb" href="./assets/restaurant-flyer.jpg" target="_blank"><img src="./assets/restaurant-flyer.jpg" alt="Restaurant Flyer"></a>
+        <h3>Restaurant Flyer Design</h3>
       </div>
 
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="grid">
-    <div class="card"><h3>Walex Biz Nigeria</h3><p><strong>UI/UX & Graphics Designer</strong> (Nov 2024 – Feb 2025)</p><ul><li>Responsible for UI/UX and graphics design</li><li>Built wireframes for future projects</li><li>Worked closely with developers to build software from UI designs</li><li>Designed UI for 3 functional software products and websites</li></ul></div>
-    <div class="card"><h3>National Centre for AI & Robotics (NITDA)</h3><p><strong>NYSC Intern</strong> (Nov 2023 – Oct 2024)</p><ul><li>Completed Python beginner training</li><li>Completed intermediate AI/ML & data science training</li><li>Developed a football prediction model project</li><li>Designed a functional UI for project work</li></ul></div>
-    <div class="card"><h3>Abdulrazak & Co. Int’l Mining Ltd</h3><p><strong>Site Supervisor</strong> (Feb 2022 – Aug 2023)</p><ul><li>Oversaw field activities and prepared weekly reports</li><li>Improved on-site safety practices and standards</li><li>Managed welfare of on-site labourers</li></ul></div>
-  </div>
-</section>
-
-<section id="education">
-  <h2>Education & Certifications</h2>
-  <div class="grid">
-    <div class="card"><h3>B.Agric.Tech (Hons) Animal Production</h3><p>Abubakar Tafawa Balewa University, Bauchi — Second Class Upper (2023)</p></div>
-    <div class="card"><h3>AI, Machine Learning & Data Science</h3><p>National Centre for AI & Robotics (NITDA) — 2024</p></div>
-    <div class="card"><h3>Drone & Model Aircraft Online Training</h3><p>United Kingdom Civil Aviation Society — 2025</p></div>
-    <div class="card"><h3>Digital Marketing</h3><p>Google Digital Skills for Africa — 2019</p></div>
-  </div>
-</section>
-
 <section id="contact">
   <h2>Contact</h2>
   <div class="grid">
-    <div class="card"><p>Email: <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></p></div>
-    <div class="card"><p>Phone: +234 703 241 3214</p></div>
-    <div class="card"><p>GitHub: <a href="https://github.com/anasbashir0" target="_blank" rel="noopener">anasbashir0</a></p></div>
+    <div class="card">Email: <a href="mailto:anasbashir0@gmail.com">anasbashir0@gmail.com</a></div>
+    <div class="card">Phone: 07032413214</div>
+    <div class="card">GitHub: <a href="https://github.com/anasbashir0" target="_blank">anasbashir0</a></div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Anas Bashir. Built with ❤️ and creativity.</p>
+  <p>© 2026 Anas Bashir. Built with ❤️</p>
 </footer>
 
 <script>
-  // Simple tabs for Projects
   const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.tab-panel');
+  const panels = document.querySelectorAll('.panel');
 
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
       panels.forEach(p => p.classList.remove('show'));
-      const panel = document.getElementById(target);
-      if (panel) panel.classList.add('show');
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('show');
     });
   });
 </script>
